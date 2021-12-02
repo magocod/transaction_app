@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Tutorial } from 'src/app/models/transaction.model';
+import { Transaction } from 'src/app/models/transaction.model';
 import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
-  selector: 'app-add-tutorial',
-  templateUrl: './add-tutorial.component.html',
-  styleUrls: ['./add-tutorial.component.css']
+  selector: 'app-add-transaction',
+  templateUrl: './add-transaction.component.html',
+  styleUrls: ['./add-transaction.component.css']
 })
-export class AddTutorialComponent implements OnInit {
+export class AddTransactionComponent implements OnInit {
 
-  tutorial: Tutorial = {
+  transaction: Transaction = {
     title: '',
   };
   submitted = false;
 
-  constructor(private tutorialService: TransactionService) { }
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
   }
 
-  saveTutorial(): void {
+  saveTransaction(): void {
     const data = {
-      title: this.tutorial.title,
+      title: this.transaction.title,
     };
 
-    this.tutorialService.create(data)
+    this.transactionService.create(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -34,9 +34,9 @@ export class AddTutorialComponent implements OnInit {
       });
   }
 
-  newTutorial(): void {
+  newTransaction(): void {
     this.submitted = false;
-    this.tutorial = {
+    this.transaction = {
       title: '',
     };
   }

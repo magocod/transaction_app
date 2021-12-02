@@ -8,17 +8,17 @@
           class="form-control"
           id="title"
           required
-          [(ngModel)]="tutorial.title"
+          [(ngModel)]="transaction.title"
           name="title"
         />
       </div>
 
-      <button (click)="saveTutorial()" class="btn btn-success">Enviar</button>
+      <button (click)="saveTransaction()" class="btn btn-success">Enviar</button>
     </div>
 
     <div *ngIf="submitted">
       <h4>Transaccion enviada</h4>
-      <button class="btn btn-success" (click)="newTutorial()">Agregar</button>
+      <button class="btn btn-success" (click)="newTransaction()">Agregar</button>
     </div>
   </div>
 </div>

@@ -3,7 +3,7 @@ import { Transaction } from 'src/app/models/transaction.model';
 import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
-  selector: 'app-tutorials-list',
+  selector: 'app-transaction-list',
   templateUrl: './transactions-list.component.html',
   styleUrls: ['./transactions-list.component.css']
 })
@@ -18,14 +18,14 @@ export class TransactionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveTransactions();
   }
 
-  retrieveTutorials(): void {
+  retrieveTransactions(): void {
     this.transactionService.getAll()
       .subscribe({
         next: (data) => {
-          this.tutorials = data;
+          this.transactions = data;
           console.log(data);
         },
         error: (e) => console.error(e)
@@ -33,13 +33,13 @@ export class TransactionListComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.retrieveTutorials();
-    this.currentTutorial = {};
+    this.retrieveTransactions();
+    this.currentTransaction = {};
     this.currentIndex = -1;
   }
 
-  setActiveTutorial(tutorial: Tutorial, index: number): void {
-    this.currentTutorial = tutorial;
+  setActiveTransaction(transaction: Transaction, index: number): void {
+    this.currentTransaction = transaction;
     this.currentIndex = index;
   }
 }

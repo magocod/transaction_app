@@ -1,4 +1,4 @@
-export class Tutorial {
+export class Transaction {
   id?: any;
   title?: string;
 }

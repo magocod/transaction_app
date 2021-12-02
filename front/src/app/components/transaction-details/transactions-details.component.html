@@ -1,25 +1,25 @@
 <div *ngIf="viewMode; else editable">
-  <div *ngIf="currentTutorial.id">
+  <div *ngIf="currentTransaction.id">
     <h4>Transaccion</h4>
     <div>
-      <label><strong>Titulo:</strong></label> {{ currentTutorial.title }}
+      <label><strong>Titulo:</strong></label> {{ currentTransaction.title }}
     </div>
     <a
       class="badge badge-warning"
-      routerLink="/tutorials/{{ currentTutorial.id }}"
+      routerLink="/transactions/{{ currentTransaction.id }}"
     >
-      Edit
+      Editar
     </a>
   </div>
 
-  <div *ngIf="!currentTutorial">
+  <div *ngIf="!currentTransaction">
     <br />
     <p>Click en transaccion...</p>
   </div>
 </div>
 
 <ng-template #editable>
-  <div *ngIf="currentTutorial.id" class="edit-form">
+  <div *ngIf="currentTransaction.id" class="edit-form">
     <h4>Transaccion</h4>
     <form>
       <div class="form-group">
@@ -28,27 +28,27 @@
           type="text"
           class="form-control"
           id="title"
-          [(ngModel)]="currentTutorial.title"
+          [(ngModel)]="currentTransaction.title"
           name="title"
         />
       </div>
     </form>
 
-    <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
-      Delete
+    <button class="badge badge-danger mr-2" (click)="deleteTransaction()">
+      Eliminar
     </button>
 
     <button
       type="submit"
       class="badge badge-success mb-2"
-      (click)="updateTutorial()"
+      (click)="updateTransaction()"
     >
-      Update
+      Editar
     </button>
     <p>{{ message }}</p>
   </div>
 
-  <div *ngIf="!currentTutorial.id">
+  <div *ngIf="!currentTransaction.id">
     <br />
     <p>No se puede acceder a la transaccion..</p>
   </div>

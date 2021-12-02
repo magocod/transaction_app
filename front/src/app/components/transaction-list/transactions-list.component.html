@@ -4,18 +4,18 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let tutorial of tutorials; let i = index"
+        *ngFor="let t of transactions; let i = index"
         [class.active]="i == currentIndex"
-        (click)="setActiveTutorial(tutorial, i)"
+        (click)="setActiveTransaction(t, i)"
       >
-        {{ tutorial.title }}
+        {{ t.title }}
       </li>
     </ul>
   </div>
   <div class="col-md-6">
-    <app-tutorial-details
+    <app-transaction-details
       [viewMode]="true"
-      [currentTutorial]="currentTutorial"
-    ></app-tutorial-details>
+      [currentTransaction]="currentTransaction"
+    ></app-transaction-details>
   </div>
 </div>
