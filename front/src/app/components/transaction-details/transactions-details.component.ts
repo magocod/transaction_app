@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TutorialService } from 'src/app/services/tutorial.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Tutorial } from 'src/app/models/tutorial.model';
+import { Tutorial } from 'src/app/models/transaction.model';
 
 @Component({
   selector: 'app-tutorial-details',
@@ -19,7 +19,7 @@ export class TutorialDetailsComponent implements OnInit {
   message = '';
 
   constructor(
-    private tutorialService: TutorialService,
+    private tutorialService: TransactionService,
     private route: ActivatedRoute,
     private router: Router) { }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tutorial } from '../models/tutorial.model';
+import { Tutorial } from '../models/transaction.model';
 
 const baseUrl = 'http://localhost:3000/transactions';
 

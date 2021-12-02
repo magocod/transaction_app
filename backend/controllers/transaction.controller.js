@@ -1,6 +1,9 @@
 const db = require("../models");
+
 const Transaction = db.transactions;
-const Op = db.Sequelize.Op;
+// const Op = db.Sequelize.Op;
+
+const { validationResult } = require("express-validator");
 
 /**
  *
@@ -8,18 +11,23 @@ const Op = db.Sequelize.Op;
  * @param {Response<ResBody, Locals>} res
  */
 exports.create = (req, res) => {
-  // TODO validate request
+  const errors = validationResult(req);
+  // console.log(errors)
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const reqData = {
     title: req.body.title,
   };
+
   Transaction.create(reqData)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Transaction.",
+        message: err.message || "error creando la transaccion",
       });
     });
 };
@@ -37,8 +45,7 @@ exports.findAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving transactions.",
+        message: err.message || "error cargando las transaccion",
       });
     });
 };
@@ -49,7 +56,6 @@ exports.findAll = (req, res) => {
  * @param {Response<ResBody, Locals>} res
  */
 exports.findOne = (req, res) => {
-  // TODO validate params
   const id = req.params.id;
 
   Transaction.findByPk(id)
@@ -58,13 +64,13 @@ exports.findOne = (req, res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Transaction with id=${id}.`,
+          message: `no se puede encontrar la transacción con id=${id}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Transaction with id=" + id,
+        message: "error buscando la transacción con id=" + id,
       });
     });
 };
@@ -75,27 +81,31 @@ exports.findOne = (req, res) => {
  * @param {Response<ResBody, Locals>} res
  */
 exports.update = (req, res) => {
-  // TODO validate params
   const id = req.params.id;
 
-  // TODO optimize, success & error responses
+  const errors = validationResult(req);
+  // console.log(errors)
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   Transaction.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Transaction was updated successfully.",
+          message: "Transaction editada con exito.",
         });
       } else {
         res.send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Transaction was not found or req.body is empty!`,
+          message: `no es posible actualizar transaccion con id=${id}`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Transaction with id=" + id,
+        message: "error actualizando transaccion con id=" + id,
       });
     });
 };
@@ -114,17 +124,17 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Transaction was deleted successfully!",
+          message: "transaccion eliminada con exito",
         });
       } else {
         res.send({
-          message: `Cannot delete Transaction with id=${id}. Maybe Tutorial was not found!`,
+          message: `no es posible eliminar transaccion con id=${id}`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Transaction with id=" + id,
+        message: "error eliminando transaccion con id=" + id,
       });
     });
 };
