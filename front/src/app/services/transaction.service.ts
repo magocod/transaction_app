@@ -35,8 +35,4 @@ export class TransactionService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-
-  findByTitle(title: any): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${baseUrl}?title=${title}`);
-  }
 }
