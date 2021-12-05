@@ -25,7 +25,7 @@ describe("GET transactions find one", function () {
   });
 
   it("invalid id", async () => {
-    const id = faker.datatype.uuid();
+    const id = faker.random.word()
     const response = await supertest(app).get("/transactions/" + id);
     // .expect(200, done);
     // console.log(data.toJSON())

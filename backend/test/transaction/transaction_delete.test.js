@@ -29,7 +29,7 @@ describe("DELETE transactions delete one", function () {
   });
 
   it("invalid id", async () => {
-    const id = faker.datatype.uuid();
+    const id = faker.random.word()
     const response = await supertest(app).delete("/transactions/" + id);
     // .expect(200, done);
     // console.log(data.toJSON())
