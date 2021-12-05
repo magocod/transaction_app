@@ -7,8 +7,11 @@ const db = require("../../models");
 // const Transaction = db.transactions; // old_models
 const Transaction = db.Transaction; // models
 
+const { generate_transaction } = require("../fixtures/transaction");
+
 describe("GET transactions list", function () {
   it("find all", async () => {
+    await generate_transaction()
     const data = await Transaction.findAll();
     const response = await supertest(app).get("/transactions");
     // .expect(200, done);
