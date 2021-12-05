@@ -6,7 +6,8 @@ const faker = require("faker");
 const app = require("../../app");
 const db = require("../../models");
 
-const Transaction = db.transactions;
+// const Transaction = db.transactions; // old_models
+const Transaction = db.Transaction; // models
 
 function _baseRequestData() {
   return {

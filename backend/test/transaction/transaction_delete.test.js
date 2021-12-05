@@ -8,7 +8,8 @@ const db = require("../../models");
 
 const { generate_transaction } = require("../fixtures/transaction");
 
-const Transaction = db.transactions;
+// const Transaction = db.transactions; // old_models
+const Transaction = db.Transaction; // models
 
 describe("DELETE transactions delete one", function () {
   it("by id", async () => {
@@ -29,7 +30,7 @@ describe("DELETE transactions delete one", function () {
   });
 
   it("invalid id", async () => {
-    const id = faker.datatype.uuid();
+    const id = faker.random.word();
     const response = await supertest(app).delete("/transactions/" + id);
     // .expect(200, done);
     // console.log(data.toJSON())
