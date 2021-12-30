@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "db:migrate": "sequelize-cli db:migrate",
+    "test_unique": "mocha -g example_hasMany_belongsTo",
+    "test_many": "mocha -g example_Many-To-Many"
   },
   "dependencies": {
     "@types/chai": "^4.2.22",

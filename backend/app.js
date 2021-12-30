@@ -49,8 +49,8 @@ app.use(function (err, req, res, next) {
 });
 
 // db
-const db = require("./models");
-db.sequelize.sync();
+// const db = require("./models");
+// db.sequelize.sync();
 
 // testing
 // db.sequelize.sync({ force: true }).then(() => {
