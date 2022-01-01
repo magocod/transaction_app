@@ -22,7 +22,7 @@ describe("example_Many-To-Many", function () {
     it("create relationship", async () => {
         const user = await User.create({ name: faker.datatype.uuid() });
         // console.log(user.toJSON())
-        const profile = await Profile.create({ name: 'Queen' });
+        const profile = await Profile.create({ name: faker.animal.fish() });
         // console.log(profile.toJSON())
         await user.addProfile(profile, { through: { selfGranted: false } })
         const result = await User.findOne({

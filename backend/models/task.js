@@ -14,18 +14,18 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId'
       });
     }
-  };
+  }
   Task.init({
     name: DataTypes.STRING,
-    // userId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     // This is a reference to another model
-    //     model: 'User',
-    //     // This is the column name of the referenced model
-    //     key: 'id',
-    //   }
-    // },
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        // This is a reference to another model
+        model: 'User',
+        // This is the column name of the referenced model
+        key: 'id',
+      }
+    },
   }, {
     sequelize,
     modelName: 'Task',

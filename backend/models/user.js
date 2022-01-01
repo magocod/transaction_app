@@ -11,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Task, {
         foreignKey: "userId",
       });
-      User.belongsToMany(models.Profile, { through: models.UserProfiles });
+      User.belongsToMany(models.Profile, {
+        foreignKey: "userId",
+        otherKey: "profileId",
+        through: models.UserProfiles,
+      });
     }
   }
   User.init(

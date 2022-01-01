@@ -14,6 +14,7 @@ const User = db.User;
  */
 const Task = db.Task;
 
+
 const faker = require("faker");
 
 // https://github.com/sequelize/express-example/issues/90
