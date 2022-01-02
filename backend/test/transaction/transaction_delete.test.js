@@ -3,17 +3,38 @@ const assert = require("assert");
 const supertest = require("supertest");
 const faker = require("faker");
 
-const app = require("../../app");
-const db = require("../../models");
-
 const { generate_transaction } = require("../fixtures/transaction");
-
-// const Transaction = db.transactions; // old_models
-const Transaction = db.Transaction; // models
+const { syncCreateApp } = require("../../factory");
 
 describe("DELETE transactions delete one", function () {
+  /**
+   * @type {Express}
+   */
+  let app;
+  /**
+   *
+   * @type {{sequelize: (sequelize.SequelizeStatic|sequelize), Sequelize: sequelize}}
+   */
+  let db;
+  /**
+   * @type {Transaction}
+   */
+  let Transaction;
+
+  before(async () => {
+    const payload = syncCreateApp();
+    app = payload.app;
+    db = payload.db;
+
+    Transaction = db.sequelize.models.Transaction;
+  });
+
+  // after(async () => {
+  //   await db.sequelize.close();
+  // });
+
   it("by id", async () => {
-    const instance = await generate_transaction();
+    const instance = await generate_transaction(db);
     // console.log(instance.toJSON());
     const response = await supertest(app).delete(
       "/transactions/" + instance.id

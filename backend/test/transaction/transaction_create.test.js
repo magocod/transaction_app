@@ -3,11 +3,7 @@ const assert = require("assert");
 const supertest = require("supertest");
 const faker = require("faker");
 
-const app = require("../../app");
-const db = require("../../models");
-
-// const Transaction = db.transactions; // old_models
-const Transaction = db.Transaction; // models
+const { syncCreateApp } = require("../../factory");
 
 function _baseRequestData() {
   return {
@@ -16,6 +12,32 @@ function _baseRequestData() {
 }
 
 describe("POST transactions create", function () {
+  /**
+   * @type {Express}
+   */
+  let app;
+  /**
+   *
+   * @type {{sequelize: (sequelize.SequelizeStatic|sequelize), Sequelize: sequelize}}
+   */
+  let db;
+  /**
+   * @type {Transaction}
+   */
+  let Transaction;
+
+  before(async () => {
+    const payload = syncCreateApp();
+    app = payload.app;
+    db = payload.db;
+
+    Transaction = db.sequelize.models.Transaction;
+  });
+
+  // after(async () => {
+  //   await db.sequelize.close();
+  // });
+
   it("create", async () => {
     const request = _baseRequestData();
     const response = await supertest(app).post("/transactions").send(request);

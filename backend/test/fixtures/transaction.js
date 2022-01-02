@@ -1,15 +1,15 @@
-const db = require("../../models");
-
-// const Transaction = db.transactions; // old_models
-const Transaction = db.Transaction; // models
-
 const faker = require("faker");
 
 /**
  *
- * @returns {Promise<any>}
+ * @param {{sequelize: (sequelize.SequelizeStatic|sequelize), Sequelize: sequelize}} db
+ * @returns {Transaction}
  */
-function generate_transaction() {
+function generate_transaction(db) {
+    /**
+     * @type {Transaction}
+     */
+    const Transaction = db.sequelize.models.Transaction;
     const d = {
         title: faker.datatype.uuid()
     }

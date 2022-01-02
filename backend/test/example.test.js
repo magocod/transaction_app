@@ -14,18 +14,24 @@ const User = db.User;
  */
 const Task = db.Task;
 
-
 const faker = require("faker");
 
 // https://github.com/sequelize/express-example/issues/90
 
 describe("example_hasMany_belongsTo", function () {
+  // after( async () => {
+  //     db.sequelize.close()
+  // })
+
   it("create relationship", async () => {
-      const user = await User.create({ name: faker.datatype.uuid() });
-      console.log(user.toJSON())
-      const task = await Task.create({ name: faker.datatype.uuid(), userId: user.id });
-      console.log(task.toJSON())
-      // assert.equal(typeof user.id, 'number');
+    const user = await User.create({ name: faker.datatype.uuid() });
+    console.log(user.toJSON());
+    const task = await Task.create({
+      name: faker.datatype.uuid(),
+      userId: user.id,
+    });
+    console.log(task.toJSON());
+    // assert.equal(typeof user.id, 'number');
   });
 
   it("get relationship, belongsTo", async () => {
