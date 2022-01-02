@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "profileId",
         through: models.UserProfiles,
       });
+      User.hasOne(models.Address, {
+        foreignKey: { name: "userId" },
+        sourceKey: "id",
+      });
     }
   }
   User.init(
