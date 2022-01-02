@@ -1,5 +1,6 @@
 {
   "all": true,
+  "exclude": ["node_modules"],
   "reporter": [
       "html",
       "lcov",
