@@ -11,6 +11,7 @@
     "test_one_to_many": "mocha --exit -g orm_one_to_many",
     "test_many_to_many": "mocha --exit -g orm_many_to_many",
     "test_one_to_one": "mocha --exit -g orm_one_to_one",
+    "test_orm": "mocha --exit -g orm",
     "test_transaction": "mocha --exit test/transaction/*.test.js",
     "test_only_file": "mocha --exit test/transaction/transaction_create.test.js"
   },
