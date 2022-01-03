@@ -8,7 +8,7 @@ const db = require("../../models");
 
 const { generate_transaction } = require("../fixtures/transaction");
 
-const Transaction = db.transactions;
+// const Transaction = db.transactions;
 
 function _baseRequestData() {
   return {
@@ -18,13 +18,13 @@ function _baseRequestData() {
 
 describe("PUT transactions update", function () {
   it("update", async () => {
-    const instance = await generate_transaction();
+    const { transaction } = await generate_transaction(db);
     // console.log(instance.toJSON())
     const request = _baseRequestData();
     const response = await supertest(app)
-      .put("/transactions/" + instance.id)
+      .put("/transactions/" + transaction.id)
       .send(request);
-    await instance.reload()
+    await transaction.reload()
     // .expect(200, done);
     // console.log(instance.toJSON())
     // console.log(response.body);
@@ -33,10 +33,10 @@ describe("PUT transactions update", function () {
   });
 
   it("form error", async () => {
-    const instance = await generate_transaction();
+    const { transaction } = await generate_transaction(db);
     const request = {};
     const response = await supertest(app)
-      .put("/transactions/" + instance.id)
+      .put("/transactions/" + transaction.id)
       .send(request);
     // .expect(200, done);
     // console.log(data.toJSON())

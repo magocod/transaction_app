@@ -1,0 +1,11 @@
+{
+  "all": true,
+  "exclude": ["node_modules"],
+  "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+  ],
+  "report-dir": "coverage"
+}

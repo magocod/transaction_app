@@ -1,10 +1,22 @@
 {
   "name": "backend",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --recursive"
+    "test": "mocha --require test/fixtures.cjs --recursive",
+    "test:coverage": "nyc npm run test",
+    "db:migrate": "sequelize-cli db:migrate",
+    "test_sample": "mocha -g sample",
+    "test_with_hook": "mocha --require test/hooks.js -g sample",
+    "test_with_global_fixture": "mocha --require test/fixtures.cjs -g sample",
+    "test_one_to_many": "mocha --require test/fixtures.cjs -g orm_one_to_many",
+    "test_many_to_many": "mocha --require test/fixtures.cjs -g orm_many_to_many",
+    "test_one_to_one": "mocha --require test/fixtures.cjs -g orm_one_to_one",
+    "test_orm": "mocha --require test/fixtures.cjs -g orm",
+    "test_transaction": "mocha --require test/fixtures.cjs test/transaction/*.test.js",
+    "test_transaction_parallel": "mocha --parallel test/transaction/*.test.js",
+    "test_only_file": "mocha --require test/fixtures.cjs test/transaction/transaction_create.test.js"
   },
   "dependencies": {
     "@types/chai": "^4.2.22",
@@ -26,11 +38,13 @@
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
     "pug": "2.0.0-beta11",
-    "sequelize": "*"
+    "sequelize": "*",
+    "tedious": "^14.0.0"
   },
   "devDependencies": {
     "mocha": "^9.1.3",
     "prettier": "2.5.0",
+    "sequelize-cli": "^6.3.0",
     "supertest": "^6.1.6"
   }
 }

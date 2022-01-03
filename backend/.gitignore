@@ -1,2 +1,6 @@
 node_modules
 .env
+
+test/coverage
+coverage
+.nyc_output
