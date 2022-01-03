@@ -1,4 +1,5 @@
 // https://mochajs.org/#global-setup-fixtures
+// https://github.com/sequelize/sequelize/issues/6758
 
 /**
  *
