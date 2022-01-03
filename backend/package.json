@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --exit --recursive",
+    "test": "mocha --recursive -parallel",
     "db:migrate": "sequelize-cli db:migrate",
     "test_sample": "mocha -g sample",
-    "test_unique": "mocha --exit -g example_hasMany_belongsTo",
-    "test_many": "mocha --exit -g example_Many-To-Many",
-    "test_transaction": "mocha --exit test/transaction/*.test.js",
-    "test_only_file": "mocha --exit test/transaction/transaction_create.test.js"
+    "test_one_to_many": "mocha -g orm_one_to_many",
+    "test_many_to_many": "mocha -g orm_many_to_many",
+    "test_orm": "mocha --parallel -g orm",
+    "test_transaction": "mocha --parallel test/transaction/*.test.js",
+    "test_only_file": "mocha test/transaction/transaction_create.test.js"
   },
   "dependencies": {
     "@types/chai": "^4.2.22",

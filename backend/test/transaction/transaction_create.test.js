@@ -34,9 +34,9 @@ describe("POST transactions create", function () {
     Transaction = db.sequelize.models.Transaction;
   });
 
-  // after(async () => {
-  //   await db.sequelize.close();
-  // });
+  after(async () => {
+    await db.sequelize.close();
+  });
 
   it("create", async () => {
     const request = _baseRequestData();

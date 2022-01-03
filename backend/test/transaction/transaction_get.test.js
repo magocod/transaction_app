@@ -29,9 +29,9 @@ describe("GET transactions find one", function () {
     Transaction = db.sequelize.models.Transaction;
   });
 
-  // after(async () => {
-  //   await db.sequelize.close();
-  // });
+  after(async () => {
+    await db.sequelize.close();
+  });
 
   it("by id", async () => {
     const instance = await generate_transaction(db);

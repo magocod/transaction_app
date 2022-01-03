@@ -6,10 +6,12 @@ const faker = require("faker");
 const app = require("../../app");
 const db = require("../../models");
 
-const { generate_transaction } = require("../fixtures/transaction");
-const { syncCreateApp } = require("../../factory");
-
+/**
+ * @type {Transaction}
+ */
 const Transaction = db.transactions;
+
+const { generate_transaction } = require("../fixtures/transaction");
 
 function _baseRequestData() {
   return {
@@ -18,28 +20,6 @@ function _baseRequestData() {
 }
 
 describe("PUT transactions update", function () {
-  /**
-   * @type {Express}
-   */
-  let app;
-  /**
-   *
-   * @type {{sequelize: (sequelize.SequelizeStatic|sequelize), Sequelize: sequelize}}
-   */
-  let db;
-  /**
-   * @type {Transaction}
-   */
-  let Transaction;
-
-  before(async () => {
-    const payload = syncCreateApp();
-    app = payload.app;
-    db = payload.db;
-
-    Transaction = db.sequelize.models.Transaction;
-  });
-
   // after(async () => {
   //   await db.sequelize.close();
   // });
