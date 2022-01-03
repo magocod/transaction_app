@@ -2,7 +2,7 @@ const faker = require("faker");
 
 /**
  *
- * @param {{sequilize: (sequelize.SequelizeStatic|sequelize), Sequilize: sequelize}} db
+ * @param {{ sequelize: sequelize.SequelizeStatic | sequelize, Sequelize: Sequelize }} db
  * @returns {Promise<{transaction: Transaction}>}
  */
 async function generate_transaction(db) {

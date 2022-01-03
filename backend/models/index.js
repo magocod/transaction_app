@@ -9,7 +9,7 @@ const config = require(__dirname + "/../config/config.json")[env];
 
 /**
  *
- * @type {{ sequilize: sequelize.SequelizeStatic | sequelize, Sequilize: Sequelize }}
+ * @type {{ sequelize: sequelize.SequelizeStatic | sequelize, Sequelize: Sequelize }}
  */
 const db = {};
 
