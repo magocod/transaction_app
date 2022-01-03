@@ -16,7 +16,7 @@ const Address = db.Address;
 
 const faker = require("faker");
 
-describe("example_one_to_one", function () {
+describe("orm_one_to_one", function () {
   it("create relationship", async () => {
     const user = await User.create({ name: faker.datatype.uuid() });
     console.log(user.toJSON());

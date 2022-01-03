@@ -7,9 +7,10 @@
     "test": "mocha --exit --recursive",
     "test:coverage": "nyc npm run test",
     "db:migrate": "sequelize-cli db:migrate",
-    "test_one": "mocha --exit -g example_one_to_many",
-    "test_many": "mocha --exit -g example_many_to_many",
-    "test_one_to_one": "mocha --exit -g example_one_to_one",
+    "test_sample": "mocha -g sample",
+    "test_one_to_many": "mocha --exit -g orm_one_to_many",
+    "test_many_to_many": "mocha --exit -g orm_many_to_many",
+    "test_one_to_one": "mocha --exit -g orm_one_to_one",
     "test_transaction": "mocha --exit test/transaction/*.test.js",
     "test_only_file": "mocha --exit test/transaction/transaction_create.test.js"
   },

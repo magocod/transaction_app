@@ -19,7 +19,7 @@ const faker = require("faker");
 
 // https://github.com/sequelize/express-example/issues/90
 
-describe("example_one_to_many", function () {
+describe("orm_one_to_many", function () {
   it("create relationship", async () => {
       const user = await User.create({ name: faker.datatype.uuid() });
       console.log(user.toJSON())
