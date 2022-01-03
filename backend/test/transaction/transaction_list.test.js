@@ -11,7 +11,7 @@ const { generate_transaction } = require("../fixtures/transaction");
 
 describe("GET transactions list", function () {
   it("find all", async () => {
-    await generate_transaction()
+    await generate_transaction(db)
     const data = await Transaction.findAll();
     const response = await supertest(app).get("/transactions");
     // .expect(200, done);

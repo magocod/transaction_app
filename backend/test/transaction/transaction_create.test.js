@@ -7,6 +7,9 @@ const app = require("../../app");
 const db = require("../../models");
 
 // const Transaction = db.transactions; // old_models
+/**
+ * @type {Transaction}
+ */
 const Transaction = db.Transaction; // models
 
 function _baseRequestData() {

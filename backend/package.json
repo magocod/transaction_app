@@ -9,6 +9,7 @@
     "db:migrate": "sequelize-cli db:migrate",
     "test_sample": "mocha -g sample",
     "test_with_hook": "mocha --require test/hooks.js -g sample",
+    "test_with_global_fixture": "mocha --require test/fixtures.cjs -g sample",
     "test_one_to_many": "mocha --exit -g orm_one_to_many",
     "test_many_to_many": "mocha --exit -g orm_many_to_many",
     "test_one_to_one": "mocha --exit -g orm_one_to_one",

@@ -10,17 +10,17 @@ const { generate_transaction } = require("../fixtures/transaction");
 
 describe("GET transactions find one", function () {
   it("by id", async () => {
-    const instance = await generate_transaction();
+    const { transaction } = await generate_transaction(db);
     // console.log(instance.toJSON());
-    const response = await supertest(app).get("/transactions/" + instance.id);
-    await instance.reload();
+    const response = await supertest(app).get("/transactions/" + transaction.id);
+    await transaction.reload();
     // .expect(200, done);
     // console.log(instance.toJSON());
     // console.log(response.body);
     assert.equal(response.status, 200);
     assert.deepEqual(
       JSON.stringify(response.body),
-      JSON.stringify(instance.toJSON())
+      JSON.stringify(transaction.toJSON())
     );
   });
 

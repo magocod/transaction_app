@@ -13,14 +13,14 @@ const Transaction = db.Transaction; // models
 
 describe("DELETE transactions delete one", function () {
   it("by id", async () => {
-    const instance = await generate_transaction();
+    const { transaction } = await generate_transaction(db);
     // console.log(instance.toJSON());
     const response = await supertest(app).delete(
-      "/transactions/" + instance.id
+      "/transactions/" + transaction.id
     );
     // .expect(200, done);
     // console.log(response.body);
-    const data = await Transaction.findByPk(instance.id);
+    const data = await Transaction.findByPk(transaction.id);
     // console.log(data);
     assert.equal(response.status, 200);
     assert.deepEqual(response.body, {
