@@ -15,6 +15,7 @@
     "test_one_to_one": "mocha --exit -g orm_one_to_one",
     "test_orm": "mocha --exit -g orm",
     "test_transaction": "mocha --exit test/transaction/*.test.js",
+    "test_transaction_parallel": "mocha --parallel test/transaction/*.test.js",
     "test_only_file": "mocha --exit test/transaction/transaction_create.test.js"
   },
   "dependencies": {

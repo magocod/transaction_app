@@ -103,7 +103,7 @@ exports.update = (req, res) => {
           message: "Transaction editada con exito.",
         });
       } else {
-        res.send({
+        res.sendStatus(404).send({
           message: `no es posible actualizar transaccion con id=${id}`,
         });
       }
@@ -132,7 +132,7 @@ exports.delete = (req, res) => {
           message: "transaccion eliminada con exito",
         });
       } else {
-        res.send({
+        res.status(404).send({
           message: `no es posible eliminar transaccion con id=${id}`,
         });
       }

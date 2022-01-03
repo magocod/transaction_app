@@ -36,7 +36,7 @@ describe("DELETE transactions delete one", function () {
     // console.log(data.toJSON())
     // console.log(response);
     // console.log(response.body);
-    assert.equal(response.status, 200);
+    assert.equal(response.status, 404);
     assert.deepEqual(response.body, {
       message: `no es posible eliminar transaccion con id=${id}`,
     });
