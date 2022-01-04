@@ -12,7 +12,9 @@ describe("GET transactions find one", function () {
   it("by id", async () => {
     const { transaction } = await generate_transaction(db);
     // console.log(instance.toJSON());
-    const response = await supertest(app).get("/transactions/" + transaction.id);
+    const response = await supertest(app).get(
+      "/transactions/" + transaction.id
+    );
     await transaction.reload();
     // .expect(200, done);
     // console.log(instance.toJSON());
@@ -25,7 +27,7 @@ describe("GET transactions find one", function () {
   });
 
   it("invalid id", async () => {
-    const id = faker.random.word()
+    const id = faker.random.word();
     const response = await supertest(app).get("/transactions/" + id);
     // .expect(200, done);
     // console.log(data.toJSON())

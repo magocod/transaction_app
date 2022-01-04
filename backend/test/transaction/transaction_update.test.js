@@ -24,7 +24,7 @@ describe("PUT transactions update", function () {
     const response = await supertest(app)
       .put("/transactions/" + transaction.id)
       .send(request);
-    await transaction.reload()
+    await transaction.reload();
     // .expect(200, done);
     // console.log(instance.toJSON())
     // console.log(response.body);

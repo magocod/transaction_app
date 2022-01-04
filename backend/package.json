@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "mocha --require test/fixtures.cjs --recursive",
     "test:coverage": "nyc npm run test",
     "db:migrate": "sequelize-cli db:migrate",

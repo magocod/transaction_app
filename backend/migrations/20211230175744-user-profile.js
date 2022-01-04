@@ -1,42 +1,42 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('UserProfiles', {
+    await queryInterface.createTable("UserProfiles", {
       userId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'users',
+            tableName: "users",
             // schema: 'schema'
           },
-          key: 'id'
+          key: "id",
         },
-        allowNull: false
+        allowNull: false,
       },
       profileId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'profiles',
+            tableName: "profiles",
             // schema: 'schema'
           },
-          key: 'id'
+          key: "id",
         },
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('UserProfiles');
-  }
+    await queryInterface.dropTable("UserProfiles");
+  },
 };
