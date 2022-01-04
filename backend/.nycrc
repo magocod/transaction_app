@@ -1,6 +1,6 @@
 {
   "all": true,
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "coverage", "public"],
   "reporter": [
       "html",
       "lcov",

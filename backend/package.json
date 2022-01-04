@@ -40,6 +40,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
+    "nyc": "^15.1.0",
     "pug": "2.0.0-beta11",
     "sequelize": "*",
     "tedious": "^14.0.0"

@@ -1,13 +1,7 @@
 const db = require("../models");
 
-/**
- * @type {Task}
- */
 const Task = db.Task; // models
 
-/**
- * @type {User}
- */
 const User = db.User;
 
 /**

@@ -3,7 +3,7 @@
 
 /**
  *
- * @type {{ sequelize: sequelize.SequelizeStatic | sequelize, Sequelize: Sequelize }}
+ * @type {DbInstance | {Transaction: Transaction; readonly default: DbInstance}}
  */
 let db;
 // const db = require("../models");
